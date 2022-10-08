@@ -65,7 +65,7 @@
         "lit-popup": "^1.8.0",
         "lodash.debounce": "^4.0.8",
         "lodash.isequal": "^4.5.0",
-        "next": "^12.3.0",
+        "next": "12.3.0",
         "postcss": "^8.4.16",
         "postcss-clamp": "^4.1.0",
         "postcss-easings": "^3.0.1",
