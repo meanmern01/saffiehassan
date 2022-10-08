@@ -1,0 +1,167 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.btn {
+    --color-default: #{$body-color};
+    --color-hover: var(--color-default);
+    --color-active: var(--color-hover);
+    --color-disabled: #{$gray};
+    --color: var(--color-default);
+
+    --outline-color: #{$dark};
+
+    --text-offset-x: 18px;
+    --text-translate-x: 28px;
+
+    --icon-size: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    color: var(--color);
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+
+    @include hover {
+        --color: var(--color-hover);
+
+        &.btn-horizontal {
+            .btn-icon-inner {
+                &::before {
+                    transform: scale(2);
+                }
+
+                &::after {
+                    transform: scale(1.5385);
+                }
+            }
+
+            &.btn--icon-left {
+                .btn-text {
+                    transform: translate3d(var(--text-translate-x), 0, 0);
+                }
+            }
+
+            &.btn--icon-right {
+                .btn-text {
+                    transform: translate3d(calc(-1 * var(--text-translate-x)), 0, 0);
+                }
+            }
+        }
+    }
+
+    @include tablet {
+        --icon-size: 28px;
+    }
+
+    &:hover,
+    &:active {
+        color: var(--color);
+    }
+
+    &:not(:disabled):active {
+        --color: var(--color-active);
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--outline-color);
+        outline-offset: 3px;
+    }
+
+    &:disabled {
+        --color: var(--color-disabled);
+        cursor: not-allowed;
+        opacity: $btn-disabled-opacity;
+    }
+
+    &.btn--icon-left {
+        .btn-text {
+            padding-left: var(--text-offset-x);
+        }
+    }
+
+    &.btn--icon-right {
+        .btn-icon {
+            order: 1;
+        }
+
+        .btn-text {
+            padding-right: var(--text-offset-x);
+        }
+    }
+}
+
+.btn-light {
+    --color-default: #{$light};
+    // --color-hover: var(--color-default);
+    // --color-active: var(--color-hover);
+}
+
+.btn-vertical {
+    flex-direction: column;
+
+    .btn-text {
+        padding-left: 0 !important;
+        padding-top: var(--text-offset-x);
+    }
+}
+
+.btn-icon {
+    flex-shrink: 0;
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    svg {
+        [fill]:not([fill='none']) {
+            fill: currentColor;
+        }
+
+        [stroke]:not([stroke='none']) {
+            stroke: currentColor;
+        }
+    }
+}
+
+.btn-icon-inner {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    transform: rotate(45deg);
+    position: relative;
+    padding: calc(var(--icon-size) * 0.35);
+
+    svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px solid currentColor;
+        transition: transform 0.5s $app-easing;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px dotted currentColor;
+        transition: transform 0.5s $app-easing;
+    }
+
+    > *:not(:global(.icon-square)) {
+        transform: rotate(-45deg);
+    }
+}
+
+.btn-text {
+    transition: transform 0.5s $app-easing;
+}

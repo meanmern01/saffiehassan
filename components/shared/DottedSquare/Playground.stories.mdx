@@ -1,0 +1,20 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import DottedSquare from './DottedSquare';
+
+<Meta title="Components/DottedSquare/Playground" component={DottedSquare} />
+
+export const Template = (args) => <DottedSquare {...args} />;
+
+# Playground
+
+<Canvas>
+    <Story
+        name="Playground"
+        args={{
+            animated: false,
+            expanded: true,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

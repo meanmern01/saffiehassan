@@ -1,0 +1,14 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.tooltip {
+    --tooltip-width: 225px;
+    --tooltip-bg-color: #{$dark};
+    --tooltip-color: #{#fff};
+    background-color: var(--tooltip-bg-color);
+    color: var(--tooltip-color);
+    z-index: 9999;
+    width: var(--tooltip-width);
+    max-width: 100vw;
+    pointer-events: none;
+}

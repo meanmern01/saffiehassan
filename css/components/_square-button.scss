@@ -1,0 +1,39 @@
+.square-button {
+    --square-button-size: 154px;
+    width: var(--square-button-size);
+    height: var(--square-button-size);
+    position: relative;
+    transform: rotate(45deg);
+
+    @include hover {
+        .square-button__el {
+            border-color: $dark;
+        }
+    }
+
+    &.active {
+        .square-button__el {
+            background-color: $dark;
+            color: $light;
+            border-color: $dark;
+        }
+    }
+}
+
+.square-button__el {
+    position: relative;
+    z-index: 1;
+    background-color: $body-bg;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+    border: 1px solid #c1c2c3;
+}
+
+.square-button__el-text {
+    transform: rotate(-45deg);
+    text-align: center;
+}

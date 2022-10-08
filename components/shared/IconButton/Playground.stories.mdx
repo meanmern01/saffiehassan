@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import IconButton from './IconButton';
+
+<Meta
+    title="Components/IconButton/Playground"
+    component={IconButton}
+    parameters={{
+        design: {
+            type: 'figma',
+            url: 'https://www.figma.com/file/IvHmiVj0o42euhvr2u4G4m/Skinstric---Design?node-id=1066%3A20341',
+        },
+    }}
+/>
+
+export const Template = ({ text, ...args }) => <IconButton {...args}>{text}</IconButton>;
+
+# Playground
+
+<Canvas>
+    <Story
+        name="Playground"
+        args={{
+            text: 'Icon Button',
+            disabled: false,
+            direction: 'horizontal',
+            iconPosition: 'left',
+            textVisible: true,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

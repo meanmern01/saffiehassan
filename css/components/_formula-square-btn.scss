@@ -1,0 +1,21 @@
+.formula__square-btn {
+    --square-button-size: 20px;
+    @include clickable();
+
+    @include hover {
+        .square-button__el {
+            border-color: currentColor;
+            opacity: 0.5;
+        }
+    }
+
+    .square-button__el {
+        background-color: transparent;
+    }
+
+    .square-button__el-text {
+        position: relative;
+        top: -1px;
+        left: -1px;
+    }
+}

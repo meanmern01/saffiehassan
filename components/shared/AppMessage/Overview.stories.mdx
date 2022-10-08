@@ -1,0 +1,29 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs';
+import ComponentProps from '@/.storybook/components/ComponentProps';
+import AppMessage from './AppMessage';
+
+<Meta title="Components/AppMessage/Overview" component={AppMessage} />
+
+# AppMessage
+
+Message component. It may contain actions in it (for example, an 'OK' button).
+
+When fixed, it appears on the top left of a screen.
+
+<Canvas withToolbar>
+    <AppMessage>We use cookie to provide the best experience</AppMessage>
+</Canvas>
+
+<ComponentProps component={AppMessage}>
+    <p>Supports all the default HTML "div" attributes.</p>
+</ComponentProps>
+
+## Import
+
+<Source
+    language="ts"
+    format={false}
+    code={`
+        import AppMessage from '@/components/shared/AppMessage';
+  `}
+/>

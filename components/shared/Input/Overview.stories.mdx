@@ -1,0 +1,27 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs';
+import ComponentProps from '@/.storybook/components/ComponentProps';
+import Input from './Input';
+
+<Meta title="Components/Input/Overview" component={Input} />
+
+# Input
+
+Input component is used to collect user data and do something with it.
+
+<Canvas withToolbar>
+    <Input />
+</Canvas>
+
+<ComponentProps component={Input}>
+    <p>Supports all the default HTML "input" attributes.</p>
+</ComponentProps>
+
+## Import
+
+<Source
+    language="ts"
+    format={false}
+    code={`
+        import Input from '@/components/shared/Input';
+  `}
+/>

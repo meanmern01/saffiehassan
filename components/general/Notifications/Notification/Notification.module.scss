@@ -1,0 +1,54 @@
+@import '../../../../css/base/variables';
+@import '../../../../css/utils/mixins';
+
+.notification {
+    padding: 18px 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+
+    &.is-error {
+        background-color: var(--danger-color);
+    }
+}
+
+.btn {
+    @include clickable();
+    position: absolute;
+    top: 50%;
+    transform: translate(50%, -50%);
+    right: calc(var(--grid-column-width) / 2);
+    width: 12px;
+    height: 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s ease;
+
+    @mixin hover() {
+        opacity: 0.65;
+    }
+
+    &:focus-visible,
+    &:active {
+        @include hover();
+    }
+
+    @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+        &:not(:disabled):hover {
+            @include hover();
+        }
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+
+        path {
+            stroke: currentColor;
+        }
+    }
+}

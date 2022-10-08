@@ -1,0 +1,147 @@
+@import '../../../../../css/base/variables';
+@import '../../../../../css/utils/mixins';
+
+.container {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.left {
+    @include grid-columns(2);
+    flex-shrink: 0;
+
+    @include vertical-tablet {
+        @include grid-columns(3);
+    }
+
+    @media screen and (max-width: 900px) {
+        @include grid-columns(3);
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+}
+
+.right {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+
+    // @media screen and (max-width: 767px) {
+    //     padding-left: 0;
+    //     position: fixed;
+    //     z-index: 10;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     overflow-y: auto;
+    //     -webkit-overflow-scrolling: touch;
+    //     transition: opacity 0.3s ease, visibility 0.3s ease;
+    //     overscroll-behavior: none;
+    //     background-color: $body-bg;
+    // }
+}
+
+.pick-button {
+    &:not(:last-child) {
+        margin-bottom: 8px;
+    }
+}
+
+.panel-tab {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 767px) {
+        z-index: 4;
+        // animation: fade-in 0.3s ease forwards;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        overscroll-behavior: none;
+        background-color: $body-bg;
+
+        &:not(.panel-tab--opened) {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        &.panel-tab--opened {
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    &:not(:global(.react-tabs__tab-panel--selected)) {
+        display: none;
+
+        @include mobile {
+            display: block;
+        }
+    }
+}
+
+.panel-tab__top-line {
+    padding-top: 15px;
+    padding-bottom: 18px;
+    padding-left: var(--offset-x);
+    padding-right: var(--offset-x);
+    display: block;
+
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}
+
+.panel-tab__title {
+    text-transform: uppercase;
+    padding: 27px var(--offset-x);
+
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.panel-left-picker {
+    @include vertical-tablet {
+        margin-top: auto;
+    }
+
+    @include mobile {
+        margin-top: 0;
+    }
+}
+
+.panel-left-skin-type-picker {
+    @include vertical-tablet {
+        --picker-square-bg-color: #fff;
+    }
+
+    @include mobile {
+        --picker-square-bg-color: #{$light-gray};
+    }
+}

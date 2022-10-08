@@ -1,0 +1,86 @@
+.link {
+    --bg-size: 0% 100%;
+    --bg-size-hover: 100% 100%;
+    --underline-height: 1px;
+    background-image: linear-gradient(
+        transparent calc(100% - var(--underline-height)),
+        currentColor var(--underline-height)
+    );
+    background-repeat: no-repeat;
+    background-size: var(--bg-size);
+    display: inline;
+    transition: background-size 0.4s $app-easing, color 0.2s ease, opacity 0.2s ease;
+
+    @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-size: var(--bg-size-hover);
+        }
+    }
+
+    &:active {
+        background-size: var(--bg-size-hover);
+    }
+
+    &:focus-visible {
+        background-size: var(--bg-size-hover);
+    }
+
+    &.link--underlined {
+        --bg-size: 100% 100%;
+        --bg-size-hover: 0% 100%;
+    }
+}
+
+.link-gray {
+    color: var(--gray);
+}
+
+.link-icon--lines {
+    --icon-size: 40px;
+    --icon-offset: 24px;
+    position: relative;
+    padding-right: calc(var(--icon-size) + var(--icon-offset));
+    color: var(--gray);
+    transition: color 0.4s ease-in-out;
+
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        right: 0;
+        width: var(--icon-size);
+        height: 1px;
+        background-color: var(--gray);
+        transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    }
+    &:before {
+        top: calc(50% - 5px);
+    }
+    &:after {
+        top: calc(50% + 5px);
+        transform-origin: left;
+        transform: scaleX(0.5);
+    }
+
+    @mixin hover() {
+        color: #000;
+        &:after {
+            transform: scaleX(0.75);
+        }
+        &:before,
+        &:after {
+            background-color: #000;
+        }
+    }
+
+    &:focus-visible,
+    &:active {
+        @include hover();
+    }
+
+    @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+        &:not(:disabled):hover {
+            @include hover();
+        }
+    }
+}

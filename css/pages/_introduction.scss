@@ -1,0 +1,96 @@
+.introduction-page {
+    .page {
+        overflow: hidden;
+        overflow: clip;
+    }
+}
+
+.introduction-title-container {
+    position: absolute;
+    top: calc(var(--header-height) + 22px);
+    left: var(--offset-x);
+}
+
+.introduction-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    @include responsive-font-size(12px, 16px, 1280px, 1920px);
+}
+
+.introduction-description {
+    margin-top: 8px;
+    text-transform: uppercase;
+
+    @include mobile {
+        &.analysis-description {
+            display: none;
+        }
+    }
+}
+
+.introduction-square {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+    .dotted-square {
+        --size: 23.43vw;
+
+        @media screen and (max-width: 1366px) {
+            --size: 30vw;
+        }
+
+        @include tablet {
+            --size: 42vmax;
+        }
+    }
+}
+
+.testing-introduction {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.testing-introduction__label {
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 2px;
+    position: absolute;
+    bottom: 100%;
+}
+
+.testing-introduction__input {
+    .form-control,
+    .input-label {
+        text-align: center;
+        @extend .h3;
+        width: 100%;
+        color: $body-color;
+    }
+
+    .input-label {
+        transition: opacity 0.15s $app-easing;
+        width: calc((var(--introduction-form-label-symbols, 15) - 5.5) * 1ch);
+    }
+
+    .form-control {
+        line-height: 1;
+        border-bottom: 1px solid currentColor;
+        width: calc((var(--introduction-form-label-symbols, 15) - 5.5) * 1ch);
+    }
+}
+
+.form-control {
+    border-radius: 0;
+}

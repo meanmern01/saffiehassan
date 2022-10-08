@@ -1,0 +1,98 @@
+body {
+    @extend .text-default;
+}
+
+.text-default {
+    @include responsive-font-size(14px, 16px, 1280px, 1920px);
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+}
+
+h1,
+.h1 {
+    letter-spacing: -0.07em;
+    line-height: 0.945;
+    @include responsive-font-size(86px, 128px, 1280px, 1920px);
+
+    @media screen and (max-width: 1024px) {
+        @include responsive-font-size(48px, 64px, 320px, 768px);
+    }
+}
+
+h2,
+.h2 {
+    letter-spacing: -0.06em;
+    line-height: 1;
+    @include responsive-font-size(56px, 72px, 1280px, 1920px);
+
+    @media screen and (max-width: 1024px) {
+        @include responsive-font-size(28px, 48px, 320px, 1024px);
+    }
+}
+
+h3,
+.h3 {
+    letter-spacing: -0.07em;
+    line-height: 1.33;
+    @include responsive-font-size(44px, 60px, 1280px, 1920px);
+
+    @media screen and (max-width: 1279px) {
+        @include responsive-font-size(36px, 44px, 1024px, 1280px);
+    }
+
+    @media screen and (max-width: 1023px) {
+        font-size: 44px;
+    }
+
+    @media screen and (max-width: 767px) {
+        @include responsive-font-size(24px, 44px, 320px, 768px);
+    }
+}
+
+h4,
+.h4 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.33;
+    @include responsive-font-size(20px, 24px, 1280px, 1920px);
+}
+
+h5,
+.h5 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.33;
+    @include responsive-font-size(16px, 20px, 1280px, 1920px);
+}
+
+.text-button {
+    @include responsive-font-size(10px, 14px, 1280px, 1920px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.6;
+
+    @include mobile {
+        font-size: 9px;
+        line-height: 1.556;
+    }
+}
+
+.text-caption {
+    font-weight: 400;
+    line-height: 1.71;
+    letter-spacing: 0;
+    @include responsive-font-size(10px, 14px, 1024px, 1280px);
+
+    @media screen and (max-width: 900px) {
+        font-size: 12px;
+    }
+}
+
+.subhead {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    @include responsive-font-size(12px, 16px, 1280px, 1920px);
+}

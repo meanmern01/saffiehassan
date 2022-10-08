@@ -1,0 +1,252 @@
+.analysis-page {
+    overflow: hidden;
+    overflow: clip;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.skin-type-page {
+    overflow: hidden;
+    overflow: clip;
+}
+
+.analysis-message {
+    margin-top: 27px;
+    position: relative;
+    z-index: 1;
+
+    @media screen and (max-width: 1440px) {
+        max-width: 300px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        max-width: 255px;
+    }
+
+    @include vertical-tablet {
+        max-width: 300px;
+    }
+
+    @include mobile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+
+        > * {
+            width: 100% !important;
+        }
+    }
+
+    .app-message__top {
+        @include mobile {
+            padding-top: 16px;
+            padding-bottom: 30px;
+        }
+    }
+
+    .app-message__bottom {
+        padding-right: 0;
+
+        .text-button {
+            @include mobile {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.analysis-message-list {
+    margin-top: 16px;
+}
+
+.analysis-message-list__item {
+    display: flex;
+    align-items: baseline;
+
+    &:not(:last-child) {
+        margin-bottom: 1em;
+    }
+
+    &::before {
+        flex-shrink: 0;
+        content: '';
+        width: 8px;
+        height: 8px;
+        margin-right: 8px;
+        position: relative;
+        top: -1px;
+        transform: rotate(45deg);
+        border: 1px solid currentColor;
+    }
+
+    &.analysis-message-list__item--checked {
+        opacity: 0.5;
+
+        &::before {
+            background-color: currentColor;
+        }
+    }
+}
+
+.analysis-square-container {
+    --square-size: 22vw;
+    margin: auto;
+    width: var(--square-size);
+    height: var(--square-size);
+    transform: rotate(45deg);
+    position: relative;
+
+    @media screen and (max-width: 1440px) {
+        --square-size: 25vw;
+    }
+
+    @include tablet {
+        --square-size: 50vmin;
+    }
+
+    @include mobile {
+        --square-size: 80vmin;
+    }
+}
+
+.analysis-square {
+    --size: var(--square-size);
+    --base-rotation: 0deg;
+}
+
+.analysis-square-actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.analysis-square-action {
+    --action-size: calc(var(--square-size) / 3);
+    width: var(--action-size);
+    height: var(--action-size);
+    background-color: $light-gray;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s $app-easing;
+
+    @include hover {
+        background-color: #e1e1e2;
+    }
+
+    &:focus-visible {
+        background-color: #e1e1e2;
+    }
+
+    &:active {
+        background-color: darken(#e1e1e2, 8%);
+    }
+}
+
+.analysis-square-action__text {
+    transform: rotate(-45deg);
+}
+
+.analysis-inner-content {
+    margin-top: 90px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+
+    @media screen and (max-width: 1366px) {
+        margin-top: 38px;
+    }
+
+    @include tablet {
+        padding-bottom: 60px;
+    }
+
+    @include vertical-tablet {
+        margin-top: 15px;
+    }
+
+    @include mobile {
+        margin-top: 15px;
+        padding-bottom: 20px;
+    }
+}
+
+.analysis-action-btn {
+    &:not(:last-child) {
+        margin-right: 17px;
+
+        @include mobile {
+            margin-right: 2px;
+        }
+    }
+}
+
+.analysis-action-btn--reset {
+    @include mobile {
+        opacity: 0.7;
+    }
+}
+
+.analysis-bottom-nav-text {
+    color: $gray;
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.analysis-inner-title {
+    @include mobile {
+        margin-top: 7px;
+    }
+}
+
+.analysis-inner-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.analysis-inner-clip-wrapper {
+    padding-right: 1.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.analysis-inner-top__back-btn-wrapper {
+    padding-top: 15px;
+    padding-bottom: 25px;
+    margin-top: -48px;
+    display: none;
+
+    @include mobile {
+        display: block;
+        margin-top: -22px;
+    }
+}
+
+.analysis-inner-bottom-nav {
+    @include mobile {
+        // padding-top: 2px;
+        // padding-bottom: 2px !important;
+        // background-color: $dark;
+        // color: $light;
+        display: none;
+    }
+
+    .analysis-inner-back-btn-wrapper {
+        @include mobile {
+            display: none;
+        }
+    }
+}

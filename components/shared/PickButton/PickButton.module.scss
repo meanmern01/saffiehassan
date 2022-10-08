@@ -1,0 +1,79 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.button {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.2s $app-easing, color 0.2s $app-easing;
+    background-color: $light-gray;
+    color: $dark;
+    padding: 10px 16px;
+    text-align: left;
+
+    @include hover {
+        &:not(.active) {
+            background-color: #e1e1e2;
+        }
+    }
+
+    &:focus-visible {
+        background-color: #e1e1e2;
+    }
+
+    &.active {
+        background-color: $dark;
+        color: $light;
+    }
+}
+
+.line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    @include vertical-tablet {
+        flex-direction: row;
+        margin-bottom: 29px;
+    }
+
+    @include mobile {
+        flex-direction: row;
+        margin-bottom: 29px;
+    }
+}
+
+.title {
+    margin-bottom: 32px;
+
+    @media screen and (max-width: 1024px) {
+        margin-bottom: 21px;
+    }
+
+    @include vertical-tablet {
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+
+    @include mobile {
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+}
+
+.category {
+    margin-top: auto;
+
+    @include vertical-tablet {
+        margin-top: 0;
+        margin-left: auto;
+        text-align: right;
+    }
+
+    @include mobile {
+        margin-top: 0;
+        margin-left: auto;
+        text-align: right;
+    }
+}

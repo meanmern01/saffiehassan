@@ -1,0 +1,44 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs';
+import ComponentProps from '@/.storybook/components/ComponentProps';
+import ActionWithConfirmation from './ActionWithConfirmation';
+import Button from '@/components/shared/Button';
+
+<Meta title="Components/ActionWithConfirmation/Overview" component={ActionWithConfirmation} />
+
+# ActionWithConfirmation
+
+Delays user action until his explicit confirmation. Child of this component is considered a user action's target.
+
+<Canvas withToolbar>
+    <div style={{ height: 200 }}>
+        <ActionWithConfirmation
+            popupTitle="Are you sure you want to delete this ingredient?"
+            popupActionsSlot={
+                <>
+                    <Button variant="dark" data-confirmation="accept">
+                        Remove
+                    </Button>
+                    <Button variant="dark" data-confirmation="cancel">
+                        Keep
+                    </Button>
+                </>
+            }
+        >
+            <Button variant="dark">Delete ingredient</Button>
+        </ActionWithConfirmation>
+    </div>
+</Canvas>
+
+<ComponentProps component={ActionWithConfirmation}>
+    <p>Supports all the default HTML "div" attributes.</p>
+</ComponentProps>
+
+## Import
+
+<Source
+    language="ts"
+    format={false}
+    code={`
+        import ActionWithConfirmation from '@/components/shared/ActionWithConfirmation';
+  `}
+/>

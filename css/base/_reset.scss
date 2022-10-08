@@ -1,0 +1,26 @@
+button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+    user-select: none;
+
+    &:active {
+        color: inherit;
+    }
+}
+
+select {
+    color: inherit;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+}

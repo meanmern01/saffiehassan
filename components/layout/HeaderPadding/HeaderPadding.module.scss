@@ -1,0 +1,13 @@
+.container {
+    --padding-top: 48px;
+    height: calc(var(--header-height) + var(--padding-top));
+    flex-shrink: 0;
+
+    @media screen and (max-width: 1440px) {
+        --padding-top: 12px;
+    }
+
+    @media print {
+        display: none;
+    }
+}

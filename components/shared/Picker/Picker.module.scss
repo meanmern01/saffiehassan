@@ -1,0 +1,309 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.wrapper {
+    --picker-wrapper-min-size: calc((var(--picker-square-size) + var(--picker-square-gap)) * 3);
+    --picker-wrapper-max-size: calc((var(--picker-square-size) + var(--picker-square-gap)) * 4.2);
+    --picker-square-size: 140px;
+    --picker-square-gap: 16px;
+    --picker-square-bg-color: #{$light-gray};
+    --picker-middle-square-bg-color: #{$body-bg};
+    height: var(--picker-wrapper-min-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.distribution--center {
+        padding-left: 0;
+        padding-right: 0;
+        width: var(--picker-wrapper-max-size);
+        height: var(--picker-wrapper-max-size);
+
+        .chosen {
+            grid-column: 2 / span 1;
+            grid-row: 2 / span 1;
+        }
+
+        .button-container {
+            &:nth-child(2) {
+                grid-column: 1 / span 1;
+                grid-row: 2 / span 1;
+            }
+
+            &:nth-child(3) {
+                grid-column: 2 / span 1;
+                grid-row: 1 / span 1;
+            }
+
+            &:nth-child(4) {
+                grid-column: 2 / span 1;
+                grid-row: 3 / span 1;
+            }
+
+            &:nth-child(5) {
+                grid-column: 3 / span 1;
+                grid-row: 2 / span 1;
+            }
+
+            &:nth-child(6) {
+                grid-column: 1 / span 1;
+                grid-row: 1 / span 1;
+            }
+
+            &:nth-child(7) {
+                grid-column: 1 / span 1;
+                grid-row: 3 / span 1;
+            }
+
+            &:nth-child(8) {
+                grid-column: 3 / span 1;
+                grid-row: 1 / span 1;
+            }
+
+            &:nth-child(9) {
+                grid-column: 3 / span 1;
+                grid-row: 3 / span 1;
+            }
+        }
+    }
+
+    &.distribution--left {
+        --picker-wrapper-max-size: calc((var(--picker-square-size) + var(--picker-square-gap)) * 5.6);
+        padding-left: calc(var(--picker-square-size) * 0.87);
+        padding-right: calc(var(--picker-square-size) * 0.87);
+
+        @media screen and (max-width: 1440px) {
+            padding-left: calc(var(--picker-square-size) * 0.5);
+            padding-right: calc(var(--picker-square-size) * 0.5);
+        }
+    }
+
+    &.distribution--right {
+        --picker-wrapper-max-size: calc((var(--picker-square-size) + var(--picker-square-gap)) * 5.6);
+        padding-left: calc(var(--picker-square-size) * 0.87);
+        padding-right: calc(var(--picker-square-size) * 0.87);
+
+        @media screen and (max-width: 1440px) {
+            padding-left: calc(var(--picker-square-size) * 0.5);
+            padding-right: calc(var(--picker-square-size) * 0.5);
+        }
+    }
+
+    &.distribution--top {
+        --picker-wrapper-max-size: calc((var(--picker-square-size) + var(--picker-square-gap)) * 5.6);
+        height: var(--picker-wrapper-max-size);
+        padding-top: calc(var(--picker-square-size) * 0.87);
+        padding-bottom: calc(var(--picker-square-size) * 0.87);
+
+        @media screen and (max-width: 1440px) {
+            padding-top: calc(var(--picker-square-size) * 0.5);
+            padding-bottom: calc(var(--picker-square-size) * 0.5);
+        }
+    }
+
+    &.distribution--bottom {
+        --picker-wrapper-max-size: calc((var(--picker-square-size) + var(--picker-square-gap)) * 5.6);
+        height: var(--picker-wrapper-max-size);
+        padding-top: calc(var(--picker-square-size) * 0.87);
+        padding-bottom: calc(var(--picker-square-size) * 0.87);
+
+        @media screen and (max-width: 1440px) {
+            padding-top: calc(var(--picker-square-size) * 0.5);
+            padding-bottom: calc(var(--picker-square-size) * 0.5);
+        }
+    }
+}
+
+.container {
+    transform: rotate(45deg);
+    position: relative;
+}
+
+.picker {
+    --picker-columns: 3;
+    position: relative;
+    display: grid;
+    grid-gap: var(--picker-square-gap);
+    grid-template-columns: repeat(var(--picker-columns), 1fr);
+    grid-template-rows: repeat(var(--picker-columns), 1fr);
+
+    // @media screen and (max-width: 1366px) {
+    //     --picker-square-size: 122px;
+    // }
+
+    // @media screen and (max-width: 1024px) {
+    //     --picker-square-size: 96px;
+    // }
+
+    // @media screen and (max-width: 900px) {
+    //     --picker-square-size: 85px;
+    // }
+}
+
+.chosen {
+    width: var(--picker-square-size);
+    height: var(--picker-square-size);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+
+    &::before {
+        content: '';
+        width: var(--picker-square-size);
+        height: var(--picker-square-size);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid $light-gray;
+        background-color: var(--picker-middle-square-bg-color);
+        transition: border-color 0.2s ease;
+    }
+
+    &[role='button'] {
+        user-select: none;
+
+        @include hover {
+            &::before {
+                border-color: $gray;
+            }
+
+            .chosen-sup,
+            .chosen-text {
+                opacity: 0.75;
+            }
+        }
+    }
+}
+
+.chosen-sup {
+    opacity: 0.5;
+    transform: translate(-50%, 0) rotate(-45deg) translate(0, -220%);
+    position: absolute;
+    left: 50%;
+    transition: opacity 0.2s ease;
+
+    @media screen and (max-width: 1024px) {
+        transform: translate(-50%, 0) rotate(-45deg) translate(0, -175%);
+    }
+
+    @media screen and (max-width: 630px) {
+        transform: translate(-50%, 0) rotate(-45deg) translate(0, -150%);
+    }
+}
+
+.chosen-text {
+    transform: rotate(-45deg);
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.button-container {
+    &:nth-child(2) {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    &:nth-child(3) {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    &:nth-child(4) {
+        grid-column: 2 / span 1;
+        grid-row: 3 / span 1;
+    }
+
+    &:nth-child(5) {
+        grid-column: 3 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    &:nth-child(6) {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    &:nth-child(7) {
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 1;
+    }
+
+    &:nth-child(8) {
+        grid-column: 3 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    &:nth-child(9) {
+        grid-column: 3 / span 1;
+        grid-row: 3 / span 1;
+    }
+}
+
+.button-wrapper {
+    position: relative;
+    transform: rotate(-45deg);
+}
+
+.button {
+    width: var(--picker-square-size);
+    height: var(--picker-square-size);
+    position: relative;
+    transform: rotate(45deg);
+
+    @include hover {
+        .el {
+            border-color: $dark;
+        }
+    }
+
+    &.active {
+        .el {
+            background-color: $dark;
+            color: $light;
+            border-color: $dark;
+        }
+    }
+}
+
+.el {
+    position: relative;
+    z-index: 1;
+    background-color: var(--picker-square-bg-color);
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid var(--picker-square-bg-color);
+}
+
+.el-text {
+    transform: rotate(-45deg);
+    text-align: center;
+}
+
+.el-text__sup {
+    position: relative;
+    left: 0.3em;
+    top: -0.5em;
+    font-size: 1em;
+}
+
+.tooltip-top {
+    padding: 6px 16px 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--tooltip-color, #fff);
+}
+
+.tooltip-content {
+    padding: 14px 16px;
+}

@@ -1,0 +1,93 @@
+.dotted-square {
+    --base-transform: translate(0, 0);
+    --base-rotation: 45deg;
+    --size: 200px;
+    --transition-duration: 0.3s;
+    width: var(--size);
+    height: var(--size);
+    border: 2px dotted $gray;
+    transform: rotate(var(--base-rotation));
+    position: relative;
+    display: block;
+    will-change: transform;
+
+    &::before,
+    &::after {
+        --base-rotation: 0deg;
+        content: '';
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        top: 50%;
+        left: 50%;
+        border: inherit;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+
+    &,
+    &.is-not-expanded {
+        &::before {
+            --base-transform: translate(-50%, -50%);
+            opacity: 0.6;
+            transform: var(--base-transform);
+            transition: transform var(--transition-duration) $app-easing calc(var(--transition-duration) / 2);
+        }
+
+        &::after {
+            --base-transform: translate(-50%, -50%) scale(1.1);
+            transform: var(--base-transform);
+            transition: transform var(--transition-duration) $app-easing,
+                opacity 0s ease calc(var(--transition-duration) / 2);
+            opacity: 0;
+        }
+    }
+
+    &.is-expanded {
+        &::before {
+            --base-transform: translate(-50%, -50%) scale(1.1);
+            transition: transform var(--transition-duration) $app-easing;
+            transform: var(--base-transform);
+        }
+
+        &::after {
+            --base-transform: translate(-50%, -50%) scale(1.2);
+            transform: var(--base-transform);
+            transition: transform var(--transition-duration) $app-easing calc(var(--transition-duration) / 2),
+                opacity 0s calc(var(--transition-duration) / 2);
+            opacity: 0.3;
+        }
+    }
+
+    &.is-animated {
+        animation: spin 120s linear infinite;
+
+        &::before {
+            animation: spin 480s linear infinite;
+        }
+
+        &::after {
+            animation: spin 240s linear infinite;
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: var(--base-transform) rotate(calc(var(--base-rotation) + 0deg));
+    }
+
+    100% {
+        transform: var(--base-transform) rotate(calc(var(--base-rotation) + 360deg));
+    }
+}
+
+@keyframes spin-negative {
+    0% {
+        transform: var(--base-transform) rotate(calc(var(--base-rotation) - 0deg));
+    }
+
+    100% {
+        transform: var(--base-transform) rotate(calc(var(--base-rotation) - 360deg));
+    }
+}

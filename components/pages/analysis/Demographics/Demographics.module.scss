@@ -1,0 +1,222 @@
+@import '../../../../css/base/variables';
+@import '../../../../css/utils/mixins';
+
+.container {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.left {
+    @include grid-columns(1);
+    flex-shrink: 0;
+
+    @include vertical-tablet {
+        @include grid-columns(3);
+    }
+
+    @media screen and (max-width: 900px) {
+        @include grid-columns(3);
+    }
+
+    @media screen and (max-width: 420px) {
+        width: 100%;
+    }
+}
+
+.right {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+}
+
+.pick-button {
+    &:not(:last-child) {
+        margin-bottom: 8px;
+    }
+}
+
+.panel {
+    flex: 1 1 auto;
+    display: flex;
+
+    @include vertical-tablet {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: 420px) {
+        z-index: 4;
+        animation: fade-in 0.3s ease forwards;
+    }
+
+    &:not(:global(.react-tabs__tab-panel--selected)) {
+        display: none;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.race-confidence {
+    flex-shrink: 0;
+    @include grid-columns(2);
+    margin-left: 16px;
+    background-color: $light-gray;
+    // border-top: 1px solid $dark;
+
+    @include tablet {
+        @include grid-columns(3);
+    }
+
+    @include vertical-tablet {
+        flex: 1 1 auto;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    @media screen and (max-width: 420px) {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        overscroll-behavior: none;
+
+        &:not(.race-confidence--opened) {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.race-confidence--opened {
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    @include horizontal-mobile {
+        flex: 1 1 auto;
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+.race-confidence__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 16px;
+    opacity: 0.8;
+    font-weight: 400;
+
+    @media screen and (max-width: 420px) {
+        border-top: 1px solid $dark;
+    }
+}
+
+.race-confidence__row {
+    width: 100%;
+    display: flex;
+    transition: background-color 0.2s $app-easing, color 0.2s $app-easing;
+    padding: 12px 16px;
+
+    @include hover {
+        &:not(.race-confidence__row--selected) {
+            background-color: #e1e1e2;
+        }
+    }
+
+    &:focus-visible {
+        background-color: #e1e1e2;
+    }
+
+    &.race-confidence__row--selected {
+        background-color: $dark;
+        color: $light;
+
+        .race-confidence__key {
+            &::after {
+                content: '';
+                position: absolute;
+                top: calc(0.4em + 4px);
+                left: 4px;
+                width: 4px;
+                height: 4px;
+                transform: rotate(45deg);
+                background-color: currentColor;
+            }
+        }
+    }
+}
+
+.race-confidence__key {
+    position: relative;
+    padding-left: 24px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0.4em;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+        border: 2px solid currentColor;
+    }
+}
+
+.race-confidence__value {
+    margin-left: auto;
+}
+
+.pick-button-diagram {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    // @media screen and (min-width: 1025px) {
+    //     display: none;
+    // }
+
+    // @include horizontal-tablet {
+    //     display: none;
+    // }
+}
+
+.pick-button-diagram__item {
+    --size: 120px;
+}
+
+.pick-button-diagram__text {
+    margin-top: 31px;
+
+    @include mobile {
+        font-size: 9px;
+        margin-top: 42px;
+    }
+}
+
+.race-confidence__top-line {
+    display: none;
+
+    @media screen and (max-width: 420px) {
+        display: block;
+        padding-top: 15px;
+        padding-bottom: 18px;
+        padding-left: var(--offset-x);
+        padding-right: var(--offset-x);
+    }
+}

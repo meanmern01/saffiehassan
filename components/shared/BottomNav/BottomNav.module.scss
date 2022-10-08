@@ -1,0 +1,38 @@
+.container {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+}
+
+.left {
+    padding-right: 10px;
+    margin-right: auto;
+    flex: 0 1 25%;
+}
+
+.middle {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.right {
+    margin-left: auto;
+    padding-left: 10px;
+    flex: 0 1 25%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-left: var(--offset-x);
+    padding-right: var(--offset-x);
+    padding-bottom: 36px;
+}

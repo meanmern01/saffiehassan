@@ -1,0 +1,50 @@
+@import '../../../../css/base/variables';
+@import '../../../../css/utils/mixins';
+
+.diagram {
+    width: var(--size, 120px);
+    position: relative;
+    @include responsive-font-size(32px, 40px, 1280px, 1920px);
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.diagram-svg {
+    will-change: transform;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    transform: rotate(-90deg);
+}
+
+.diagram-path {
+    stroke: #c1c2c3;
+}
+
+.diagram-progress {
+    stroke: $dark;
+}
+
+.percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.percent-sign {
+    display: inline-block;
+    transform: translate(0, -50%);
+    margin-left: 3px;
+
+    &,
+    &.analysis-curtain-block__bottom-slot {
+        font-size: 0.6em;
+    }
+
+    @media screen and (max-width: 1440px) {
+        font-size: 0.5em;
+        transform: translate(0, -80%);
+        font-weight: 600;
+    }
+}

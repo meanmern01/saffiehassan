@@ -1,0 +1,69 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.header {
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    text-transform: uppercase;
+}
+
+.nav {
+    --bracket-width: 0.3125em;
+    text-transform: uppercase;
+    margin-left: 16px;
+    padding-left: calc(6px + var(--bracket-width));
+    padding-right: calc(6px + var(--bracket-width));
+    opacity: 0.6;
+    position: relative;
+
+    @media screen and (max-width: 1366px) {
+        margin-left: 26px;
+    }
+
+    @include mobile {
+        margin-left: 16px;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg width='5' height='19' viewBox='0 0 5 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 18H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h2' stroke='%231A1B1C'/%3E%3C/svg%3E%0A");
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: var(--bracket-width);
+        height: calc(4.352 * var(--bracket-width));
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    &::before {
+        left: 0;
+    }
+
+    &::after {
+        right: 0;
+        transform: translate(0, -50%) rotate(180deg);
+    }
+}

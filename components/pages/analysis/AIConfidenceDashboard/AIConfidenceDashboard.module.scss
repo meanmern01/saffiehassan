@@ -1,0 +1,39 @@
+@import '../../../../css/base/variables';
+@import '../../../../css/utils/mixins';
+
+.container {
+    background-color: $light-gray;
+    color: $dark;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 14px 16px;
+}
+
+.title {
+    margin-bottom: 82px;
+}
+
+.diagram {
+    --size: 20vw;
+    margin-left: auto;
+    margin-top: auto;
+
+    @media screen and (min-width: 1921px) {
+        --size: 384px;
+    }
+
+    @media screen and (max-width: 1366px) {
+        --size: 176px;
+    }
+
+    @include vertical-tablet {
+        --size: 272px;
+        margin-right: auto;
+        margin-bottom: 82px;
+    }
+
+    @include mobile {
+        --size: 200px;
+    }
+}

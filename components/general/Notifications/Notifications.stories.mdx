@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Notifications from './Notifications';
+import { NotificationsContextProvider, useNotificationsContext } from '@/contexts/notifications';
+
+<Meta
+    title="WIP/Notifications"
+    component={Notifications}
+    decorators={[
+        (Story) => (
+            <NotificationsContextProvider>
+                <Story />
+                <Notifications />
+            </NotificationsContextProvider>
+        ),
+    ]}
+/>
+
+export const Template = ({ message, ...args }) => {
+    const { pushNotification } = useNotificationsContext();
+    return <button onClick={() => message && pushNotification(message)}>Click me to receive a notification</button>;
+};
+
+# Notifications
+
+Notifications system.
+
+<Canvas>
+    <Story name="Default" args={{ message: 'New notification!' }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>

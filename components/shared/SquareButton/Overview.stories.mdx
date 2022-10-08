@@ -1,0 +1,25 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs';
+import ComponentProps from '@/.storybook/components/ComponentProps';
+import SquareButton from './SquareButton';
+
+<Meta title="Components/SquareButton/Overview" component={SquareButton} />
+
+# SquareButton
+
+<Canvas withToolbar>
+    <SquareButton>A.I. Suggestions</SquareButton>
+</Canvas>
+
+<ComponentProps component={SquareButton}>
+    <p>Supports all the default HTML "button" attributes.</p>
+</ComponentProps>
+
+## Import
+
+<Source
+    language="ts"
+    format={false}
+    code={`
+        import SquareButton from '@/components/shared/SquareButton';
+  `}
+/>

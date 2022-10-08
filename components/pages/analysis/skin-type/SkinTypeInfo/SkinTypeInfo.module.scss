@@ -1,0 +1,65 @@
+@import '../../../../../css/base/variables';
+@import '../../../../../css/utils/mixins';
+
+.diagram {
+    --size: 128px;
+
+    margin-top: 35px;
+
+    @include horizontal-tablet {
+        margin-top: 0;
+    }
+
+    @include vertical-tablet {
+        --size: 272px;
+        margin-top: 35px;
+    }
+
+    @media screen and (max-width: 767px) {
+        --size: 168px;
+    }
+
+    * {
+        font-size: 32px;
+    }
+}
+
+.content {
+    margin-top: 81px;
+
+    @include vertical-tablet {
+        margin-top: 70px;
+        margin-bottom: 46px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 16px;
+    }
+}
+
+.title {
+    text-transform: uppercase;
+
+    &:not(:last-child) {
+        margin-bottom: 21px;
+    }
+}
+
+.block {
+    flex: 1 1 auto;
+
+    &:not(:first-child) {
+        @include vertical-tablet {
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+
+.result-block {
+    @include vertical-tablet {
+        :global(.analysis-curtain-block__title) {
+            display: none;
+        }
+    }
+}

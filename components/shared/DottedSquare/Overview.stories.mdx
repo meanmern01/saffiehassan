@@ -1,0 +1,56 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs';
+import ComponentProps from '@/.storybook/components/ComponentProps';
+import CSSVariables from '@/.storybook/components/CSSVariables';
+import DottedSquare from './DottedSquare';
+
+<Meta title="Components/DottedSquare/Overview" component={DottedSquare} />
+
+# DottedSquare
+
+DottedSquare serves as a decoration throughout the app.
+
+<Canvas withToolbar>
+    <DottedSquare style={{ '--size': '100px' }} />
+</Canvas>
+
+<ComponentProps component={DottedSquare}>
+    <p>Supports all the default HTML "div" attributes.</p>
+</ComponentProps>
+
+<CSSVariables
+    component={DottedSquare}
+    data={[
+        {
+            name: '--base-transform',
+            description: 'Base transform value',
+            default: 'translate(0, 0)',
+        },
+        {
+            name: '--base-rotation',
+            description: 'Base rotation value',
+            default: '45deg',
+        },
+        {
+            name: '--size',
+            description: 'The size of a square',
+            default: '200px',
+        },
+        {
+            name: '--transition-duration',
+            description: 'Expanding/collapsing animation duration',
+            default: '0.3s',
+        },
+    ]}
+>
+    {/* <p>Supports all the default HTML "div" attributes.</p> */}
+</CSSVariables>
+
+## Import
+
+<Source
+    language="ts"
+    format={false}
+    code={`
+        import DottedSquare from '@/components/shared/DottedSquare';
+  `}
+/>

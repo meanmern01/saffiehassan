@@ -1,0 +1,269 @@
+.wysiwyg {
+    img:not([class]) {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+        @extend .img-responsive;
+
+        &:not(:first-child) {
+            margin-top: 5.2vw;
+
+            @media screen and (min-width: 1921px) {
+                margin-top: 100px;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 5.2vw;
+
+            @media screen and (min-width: 1921px) {
+                margin-bottom: 100px;
+            }
+        }
+    }
+    // image with caption
+    figure {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+        @extend .figure;
+
+        img {
+            /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+            @extend .figure-img;
+        }
+
+        figcaption {
+            /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+            @extend .figure-caption;
+        }
+    }
+    // default tables
+    table:not([class]) {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+        @extend .table;
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+        // @extend .table-bordered;
+        width: 100%;
+
+        &:not(:first-child) {
+            margin-top: 72px;
+
+            @include mobile {
+                margin-top: 18px;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 72px;
+
+            @include mobile {
+                margin-bottom: 18px;
+            }
+        }
+    }
+    // disabled table
+    table[border='0'] {
+        background: transparent;
+        border: 0;
+        width: inherit;
+
+        > thead,
+        > tbody,
+        > tfoot {
+            > tr {
+                /* stylelint-disable-next-line selector-max-compound-selectors */
+                > th,
+                > td {
+                    background: transparent;
+                    border: 0;
+                }
+            }
+        }
+    }
+    ul,
+    ol {
+        padding: 0;
+
+        &:not(:first-child) {
+            margin-top: 65px;
+
+            @media screen and (max-width: 1366px) {
+                margin-top: 51px;
+            }
+
+            @media screen and (max-width: 767px) {
+                margin-top: 41px;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 65px;
+
+            @media screen and (max-width: 1366px) {
+                margin-bottom: 51px;
+            }
+
+            @media screen and (max-width: 767px) {
+                margin-bottom: 41px;
+            }
+        }
+
+        li {
+            &:not(:last-child) {
+                margin-bottom: 0.85em;
+            }
+        }
+    }
+    ul {
+        li {
+            position: relative;
+            padding-left: 32px;
+            display: block;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 12px;
+                top: calc(0.75em - 4px);
+                border-radius: 50%;
+                background-color: currentColor;
+                width: 8px;
+                height: 8px;
+
+                @media screen and (max-width: 767px) {
+                    width: 6px;
+                    height: 6px;
+                    top: calc(0.75em - 3px);
+                }
+            }
+        }
+    }
+    ol {
+        counter-reset: num;
+
+        li {
+            display: flex;
+            counter-increment: num;
+            position: relative;
+            padding-left: 32px;
+
+            &::before {
+                content: counter(num) '.';
+                position: absolute;
+                left: 6px;
+                margin-right: 0.5em;
+            }
+        }
+    }
+    // responsive images
+    .img-responsive {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+        @extend .img-fluid;
+    }
+
+    .img-rounded {
+        border-radius: $border-radius !important;
+    }
+
+    .img-circle {
+        border-radius: $border-radius !important;
+        border-radius: 50%;
+    }
+    // image aligment
+    img[align='left'],
+    img.pull-left {
+        float: left;
+        margin-right: $font-size-base;
+    }
+
+    img[align='right'],
+    img.pull-right {
+        float: right;
+        margin-left: $font-size-base;
+    }
+
+    .text-center img,
+    img.text-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    // blockquotes
+    blockquote {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+        @extend .blockquote;
+
+        &:not(:first-child) {
+            margin-top: 48px;
+
+            @media screen and (max-width: 767px) {
+                margin-top: 41px;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 56px;
+
+            @media screen and (max-width: 767px) {
+                margin-bottom: 39px;
+            }
+        }
+    }
+    .news-detail-video {
+        &:not(:first-child) {
+            margin-top: 80px;
+
+            @media screen and (max-width: 1366px) {
+                margin-top: 65px;
+            }
+
+            @media screen and (max-width: 767px) {
+                margin-top: 44px;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 88px;
+
+            @media screen and (max-width: 1366px) {
+                margin-bottom: 70px;
+            }
+
+            @media screen and (max-width: 767px) {
+                margin-bottom: 41px;
+            }
+        }
+    }
+    p {
+        &:not(:last-child) {
+            margin-bottom: 1.7em;
+        }
+    }
+    a:not([class]) {
+        @extend .link;
+        @extend .link--underlined;
+    }
+    h2 {
+        &:not(:first-child) {
+            margin-top: 1.6375em;
+
+            @media screen and (max-width: 767px) {
+                margin-top: 51px;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 0.8125em;
+
+            @media screen and (max-width: 767px) {
+                margin-bottom: 41px;
+            }
+        }
+    }
+    h3 {
+        &:not(:first-child) {
+            margin-top: 60px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+}

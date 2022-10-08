@@ -1,0 +1,218 @@
+html {
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100%;
+    // overflow: hidden;
+    // overflow: clip;
+    @include scrollbar();
+
+    // * {
+    //     &::-webkit-scrollbar {
+    //         width: inherit;
+    //         height: inherit;
+    //         background-color: inherit;
+    //     }
+
+    //     &::-webkit-scrollbar-thumb {
+    //         background-color: inherit;
+    //         border-radius: inherit;
+    //     }
+    // }
+
+    // @include tablet {
+    //     position: static;
+    //     height: auto;
+    //     overflow: visible;
+    // }
+
+    &.no-scroll {
+        overflow: hidden;
+
+        body {
+            overflow: hidden;
+        }
+    }
+}
+
+body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &.no-scroll {
+        overflow: hidden;
+        padding-right: var(--scrollbar-width, 0px);
+    }
+}
+
+::selection {
+    background-color: rgba($primary, 0.3);
+
+    .section-dark & {
+        background-color: rgba(#fff, 0.3);
+    }
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+}
+
+:focus {
+    outline-color: currentColor;
+}
+
+:focus-visible {
+    @include outline();
+}
+
+#__next {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+}
+
+.wrapper {
+    display: block;
+    width: 100%;
+    max-width: 2560px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--offset-x);
+    padding-right: var(--offset-x);
+}
+
+.styled-scrollbar {
+    @include scrollbar();
+}
+
+.responsive {
+    position: relative;
+    height: 0;
+    padding-top: 56.25%;
+    width: 100%;
+}
+
+.responsive__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+img.responsive__item,
+video.responsive__item {
+    object-fit: cover;
+}
+
+.image-cover {
+    object-fit: cover;
+}
+
+.page {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 36px;
+    position: relative;
+}
+
+[data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    transition: opacity 0.8s $app-easing 0.1s, transform 0.8s $app-easing 0.1s;
+
+    &.is-revealed {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.text-transition-container {
+    display: block;
+    overflow: hidden;
+}
+
+.splitted {
+    will-change: transform;
+}
+
+.icon-square {
+    background-color: currentColor;
+    width: 4px;
+    height: 4px;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.curtain-reveal-element {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $dark;
+        transform: scaleX(0);
+        transform-origin: 0% 50%;
+        transition: transform 0.4s $app-easing 0.7s;
+        will-change: transform;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $body-bg;
+        transform-origin: 50% 100%;
+        transition: transform 0.7s easeInOutCubic;
+        will-change: transform;
+    }
+
+    &.is-revealed {
+        &::before {
+            transform: scaleX(1);
+            transition: transform 1s $app-easing;
+        }
+
+        &::after {
+            transform: scaleY(0);
+            transition: transform 0.7s easeInOutCubic 1s;
+        }
+    }
+}

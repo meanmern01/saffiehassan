@@ -1,0 +1,17 @@
+.formula-info-card__action-enter {
+    clip-path: inset(0% 100% 0% 0%);
+}
+
+.formula-info-card__action-enter-active {
+    clip-path: inset(0% 0% 0% 0%);
+    transition: clip-path 0.5s easeOutCubic !important;
+}
+
+.formula-info-card__action-exit {
+    clip-path: inset(0% 0% 0% 0%);
+}
+
+.formula-info-card__action-exit-active {
+    clip-path: inset(0% 100% 0% 0%);
+    transition: clip-path 0.5s easeOutCubic !important;
+}

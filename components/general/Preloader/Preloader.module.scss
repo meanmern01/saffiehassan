@@ -1,0 +1,158 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.container {
+    --square-size: 45vmin;
+    --transition-duration: 0.75s;
+    --transition-ease: linear;
+    --transition-1-base-delay: 0.4s;
+    --transition-2-base-delay: 0.2s;
+    --transition-3-base-delay: 0s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background-color: $light;
+    color: $dark;
+    overflow: hidden;
+    overflow: clip;
+
+    &.is-hidden {
+        display: none;
+    }
+
+    &.is-animated {
+        .square {
+            opacity: 0;
+            transition: opacity 0.4s $app-easing
+                calc(1s + var(--transition-1-base-delay) + var(--transition-duration) * 9);
+
+            &::before {
+                opacity: 0;
+                transition: opacity 0.4s $app-easing
+                    calc(1s + var(--transition-2-base-delay) + var(--transition-duration) * 9);
+            }
+
+            &::after {
+                opacity: 0;
+                transition: opacity 0.4s $app-easing
+                    calc(1s + var(--transition-3-base-delay) + var(--transition-duration) * 9);
+            }
+        }
+
+        .square-mask {
+            &::before {
+                transform: scaleX(0);
+            }
+
+            &::after {
+                transform: scaleY(0);
+            }
+
+            .square-mask-inner {
+                &::before {
+                    transform: scaleX(0);
+                }
+
+                &::after {
+                    transform: scaleY(0);
+                }
+            }
+        }
+    }
+}
+
+.square {
+    --size: var(--square-size);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.square-mask {
+    --transition-base-delay: 0s;
+    width: var(--square-size);
+    height: var(--square-size);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        opacity: 1;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: $light;
+        transform-origin: 100% 50%;
+        transition: transform var(--transition-duration) var(--transition-ease) var(--transition-base-delay);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: -2px;
+        top: 0;
+        opacity: 1;
+        width: 4px;
+        height: 100%;
+        background-color: $light;
+        transform-origin: 50% 100%;
+        transition: transform var(--transition-duration) var(--transition-ease)
+            calc(var(--transition-base-delay) + var(--transition-duration));
+    }
+}
+
+.square-mask-inner {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        opacity: 1;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: $light;
+        transform-origin: 0% 50%;
+        transition: transform var(--transition-duration) var(--transition-ease)
+            calc(var(--transition-base-delay) + var(--transition-duration) * 2);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: -2px;
+        top: 0;
+        opacity: 1;
+        width: 4px;
+        height: 100%;
+        background-color: $light;
+        transform-origin: 50% 0%;
+        transition: transform var(--transition-duration) var(--transition-ease)
+            calc(var(--transition-base-delay) + var(--transition-duration) * 3);
+    }
+}
+
+.square-mask-1 {
+    --transition-base-delay: var(--transition-1-base-delay);
+}
+
+.square-mask-2 {
+    --transition-base-delay: var(--transition-2-base-delay);
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
+}
+
+.square-mask-3 {
+    --transition-base-delay: var(--transition-3-base-delay);
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+}

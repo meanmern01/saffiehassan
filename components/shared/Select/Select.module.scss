@@ -1,0 +1,62 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.trigger {
+    @include clickable();
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    transition: opacity 0.2s ease;
+
+    @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+        &:not(:disabled):hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.trigger-icon {
+    flex-shrink: 0;
+    margin-left: 5px;
+}
+
+.content {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    max-width: 240px;
+    font-size: 13px;
+}
+
+.item {
+    cursor: pointer;
+    padding: 15px 24px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+
+    @mixin hover() {
+        background-color: #202020;
+    }
+
+    &:focus-visible,
+    &:active {
+        @include hover();
+    }
+
+    @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+        &:hover {
+            @include hover();
+        }
+    }
+
+    svg {
+        margin-left: 10px;
+        flex-shrink: 0;
+    }
+
+    path {
+        stroke: currentColor;
+    }
+}

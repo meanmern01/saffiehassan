@@ -1,0 +1,27 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs';
+import ComponentProps from '@/.storybook/components/ComponentProps';
+import Button from './Button';
+
+<Meta title="Components/Button/Overview" component={Button} />
+
+# Button
+
+Button enables user to take an action or to start a process.
+
+<Canvas withToolbar>
+    <Button variant="dark">Button</Button>
+</Canvas>
+
+<ComponentProps component={Button}>
+    <p>Supports all the default HTML "button" attributes.</p>
+</ComponentProps>
+
+## Import
+
+<Source
+    language="ts"
+    format={false}
+    code={`
+        import Button from '@/components/shared/Button';
+  `}
+/>

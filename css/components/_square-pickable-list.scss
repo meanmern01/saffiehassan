@@ -1,0 +1,64 @@
+.square-pickable__list {
+    margin-left: calc(-1 * var(--offset-x));
+    margin-right: calc(-1 * var(--offset-x));
+}
+
+.square-pickable__list-item {
+    position: relative;
+}
+
+.square-pickable__item {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: calc(var(--offset-x) + 34px);
+    padding-right: var(--offset-x);
+    position: relative;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 17px;
+        left: calc(var(--offset-x) + 3px);
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+        border: 1px solid $light;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: calc(var(--offset-x) + 6px);
+        width: 6px;
+        height: 6px;
+        transform: rotate(45deg);
+        background-color: $light;
+        opacity: 0;
+        transition: opacity 0.15s ease;
+    }
+
+    &.square-pickable__item--selected {
+        background-color: rgba($light, 0.1);
+
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+.square-pickable__item-more-info-btn {
+    position: absolute;
+    z-index: 1;
+    top: 14px;
+    right: calc(var(--offset-x) + 3px);
+}

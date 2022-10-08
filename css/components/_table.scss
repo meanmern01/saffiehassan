@@ -1,0 +1,16 @@
+.table {
+    border-bottom: 0;
+    border-top: 1px solid currentColor;
+    table-layout: fixed;
+
+    td {
+        @extend .text-default;
+        padding-top: 5px;
+        padding-bottom: 66px;
+
+        &:first-child {
+            @extend .subhead;
+            text-transform: uppercase;
+        }
+    }
+}

@@ -1,0 +1,215 @@
+.about-page {
+    .page {
+        position: relative;
+
+        @include tablet {
+            overflow: hidden;
+            overflow: clip;
+        }
+
+        @include mobile {
+            overflow: visible;
+        }
+    }
+}
+
+.about-intro-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    @include tablet {
+        flex-direction: column;
+    }
+
+    @include mobile {
+        margin-top: 0;
+        margin-bottom: 0;
+        flex: 1 1 auto;
+    }
+}
+
+.about-intro-btn {
+    @media screen and (min-width: 1200px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    // @include hover {
+    //     .dotted-square {
+    //         &::before {
+    //             opacity: 0.6;
+    //             transform: translate(-50%, -50%);
+    //             transition: transform var(--transition-duration) $app-easing calc(var(--transition-duration) / 2);
+    //         }
+
+    //         &::after {
+    //             transform: translate(-50%, -50%) scale(1.1);
+    //             transition: transform var(--transition-duration) $app-easing,
+    //                 opacity 0s ease calc(var(--transition-duration) / 2);
+    //             opacity: 0;
+    //         }
+    //     }
+    // }
+
+    &:last-child {
+        @include mobile {
+            margin-top: 30px;
+        }
+    }
+}
+
+.about-intro-btn--left {
+    @include grid-offset(margin-left, 1);
+
+    @include tablet {
+        margin-left: 0;
+    }
+}
+
+.about-intro-btn--right {
+    @include grid-offset(margin-right, 1);
+
+    @include tablet {
+        margin-right: 0;
+    }
+}
+
+.about-intro-btn__text {
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.about-square {
+    --size: 15.1vw;
+}
+
+.about-intro-title {
+    max-width: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (max-width: 1680px) {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    @include tablet {
+        order: -1;
+    }
+
+    @include vertical-tablet {
+        transform: translate3d(0, -20vh, 0);
+    }
+
+    @include mobile {
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 20vh;
+        padding-bottom: 40px;
+        max-width: 300px;
+        transform: none;
+    }
+}
+
+.about-content-wrapper {
+    position: absolute;
+    opacity: 0;
+    left: var(--offset-x);
+    // width: calc(100vw - var(--offset-x) * 2);
+    width: 100vw;
+    left: 0;
+    padding-left: var(--offset-x);
+    padding-right: var(--offset-x);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+    @include scrollbar();
+}
+
+.about-content {
+    overflow: hidden;
+    overflow: clip;
+    @include grid-offset(padding-left, 2);
+    @include grid-offset(padding-right, 2);
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    margin-bottom: -36px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 1440px) {
+        @include grid-offset(padding-left, 1);
+        @include grid-offset(padding-right, 1);
+    }
+
+    @include mobile {
+        padding-left: var(--offset-x);
+        padding-right: var(--offset-x);
+        margin-left: calc(-1 * var(--offset-x));
+        margin-right: calc(-1 * var(--offset-x));
+    }
+
+    p {
+        @extend .h3;
+    }
+}
+
+.about-content-item {
+    position: relative;
+
+    &:not(:last-child) {
+        flex: 1 1 auto;
+        margin-bottom: 100px;
+    }
+
+    + .about-content-item {
+        margin-top: auto;
+    }
+}
+
+.about-content-item__title {
+    margin-bottom: 32px;
+    will-change: transform;
+}
+
+.about-content-item__title-current {
+    pointer-events: none;
+}
+
+.about-content-item-text-next {
+    position: absolute;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.about-content-bottom {
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
+}
+
+.about-bottom-nav {
+    position: fixed;
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 36px var(--offset-x);
+
+    button {
+        pointer-events: auto;
+    }
+}

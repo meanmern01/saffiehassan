@@ -1,0 +1,159 @@
+.testing-page {
+    .page {
+        overflow: hidden;
+        overflow: clip;
+    }
+}
+
+.testing-access-row {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: space-around;
+    padding-top: calc(var(--header-height) * 3);
+    padding-bottom: var(--header-height);
+
+    @include vertical-tablet {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.access-btn {
+    --square-size: 15.1vw;
+    --icon-size: 136px;
+    position: relative;
+
+    @media screen and (max-width: 1440px) {
+        --square-size: 20vw;
+        --icon-size: 112px;
+    }
+
+    @include vertical-tablet {
+        --square-size: 180px;
+    }
+
+    @include mobile {
+        --square-size: 120px;
+        --icon-size: 64px;
+    }
+
+    @include hover {
+        .access-btn__icon {
+            svg,
+            img {
+                transform: scale(0.8);
+            }
+        }
+
+        .dotted-square {
+            &::before {
+                opacity: 0.6;
+                transform: translate(-50%, -50%);
+                transition: transform var(--transition-duration) $app-easing calc(var(--transition-duration) / 2);
+            }
+
+            &::after {
+                transform: translate(-50%, -50%) scale(1.1);
+                transition: transform var(--transition-duration) $app-easing,
+                    opacity 0s ease calc(var(--transition-duration) / 2);
+                opacity: 0;
+            }
+        }
+    }
+
+    &.access-btn--left {
+        .access-btn__icon {
+            &::before {
+                transform: translate(-50%, -50%) rotate(45deg)
+                    translate(0, calc(var(--square-size) / 6 + calc(var(--icon-size) * 0.5)));
+            }
+        }
+
+        .access-btn__text {
+            right: 85%;
+            top: 85%;
+
+            @include mobile {
+                right: 100%;
+                top: 100%;
+            }
+        }
+    }
+
+    &.access-btn--right {
+        .access-btn__icon {
+            &::before {
+                transform: translate(-50%, -50%) rotate(45deg)
+                    translate(0, calc(-1 * (var(--square-size) / 6 + calc(var(--icon-size) * 0.5))));
+            }
+        }
+
+        .access-btn__text {
+            left: 85%;
+            bottom: 85%;
+
+            @include mobile {
+                left: 100%;
+                bottom: 100%;
+            }
+        }
+    }
+
+    &:not(:last-child) {
+        @include vertical-tablet {
+            margin-bottom: 150px;
+        }
+
+        @include mobile {
+            margin-bottom: 100px;
+        }
+    }
+}
+
+.access-btn__square {
+    --size: var(--square-size);
+}
+
+.access-btn__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--icon-size);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 1px;
+        height: calc(var(--square-size) / 3);
+        background-color: currentColor;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s $app-easing;
+    }
+}
+
+.access-btn__text {
+    position: absolute;
+    text-transform: uppercase;
+    width: 136px;
+    text-align: left;
+
+    @include mobile {
+        width: 110px;
+    }
+}

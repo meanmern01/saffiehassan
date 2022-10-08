@@ -1,0 +1,22 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs';
+import ComponentProps from '@/.storybook/components/ComponentProps';
+import Picker from './Picker';
+import { Playground } from './Playground.stories';
+
+<Meta title="Components/Picker/Overview" component={Picker} />
+
+# Picker
+
+Picker is used to select one item of a list of options.
+
+<Canvas withToolbar>
+    <Picker middleText="A.I. Suggestions" options={Playground.args.options} />
+</Canvas>
+
+<ComponentProps component={Picker}>
+    <p>Supports all the default HTML "div" attributes.</p>
+</ComponentProps>
+
+## Import
+
+<Source language="ts" format={false} code={`import Picker from '@/components/shared/Picker';`} />

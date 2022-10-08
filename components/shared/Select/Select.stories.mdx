@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import Select from './Select';
+
+<Meta title="WIP/Select" component={Select} />
+
+export const Template = (args) => <Select {...args} />;
+
+# Select
+
+<br />
+
+Компонент для выбора опции из списка.
+
+## Props
+
+<ArgsTable of={Select} />
+
+## Default Select
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            options: [
+                { text: 'Option 1', value: '1' },
+                { text: 'Option 2', value: '2' },
+                { text: 'Option 3', value: '3' },
+            ],
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

@@ -1,0 +1,17 @@
+.loading-screen-enter {
+    opacity: 0;
+}
+
+.loading-screen-enter-active {
+    opacity: 1;
+    transition: opacity 0.8s;
+}
+
+.loading-screen-exit {
+    opacity: 1;
+}
+
+.loading-screen-exit-active {
+    opacity: 0;
+    transition: opacity 0.8s;
+}

@@ -1,0 +1,18 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import Loader from './Loader';
+
+<Meta title="WIP/Loader" component={Loader} />
+
+export const Template = (args) => <Loader {...args} />;
+
+# Loader
+
+<br />
+
+## Props
+
+<ArgsTable of={Loader} />
+
+<Canvas>
+    <Story name="Default">{Template.bind({})}</Story>
+</Canvas>

@@ -1,0 +1,45 @@
+import { Meta, Story, Canvas, IconGallery, IconItem } from '@storybook/addon-docs';
+import ArrLeftSVG from '@/svg/arr-left.svg';
+import ArrRightSVG from '@/svg/arr-right.svg';
+import CameraSVG from '@/svg/camera.svg';
+import CrossSVG from '@/svg/cross.svg';
+import GallerySVG from '@/svg/gallery.svg';
+import PinSVG from '@/svg/pin.svg';
+import QuestionMarkSVG from '@/svg/question-mark.svg';
+
+<Meta
+    title="Common/Icons"
+    decorators={[
+        (Story) => (
+            <div className="icon">
+                <Story />
+            </div>
+        ),
+    ]}
+/>
+
+# Icons
+
+<IconGallery>
+    <IconItem name="arr-left.svg">
+        <ArrLeftSVG />
+    </IconItem>
+    <IconItem name="arr-right.svg">
+        <ArrRightSVG />
+    </IconItem>
+    <IconItem name="cross.svg">
+        <CrossSVG />
+    </IconItem>
+    <IconItem name="camera.svg">
+        <CameraSVG />
+    </IconItem>
+    <IconItem name="gallery.svg">
+        <GallerySVG />
+    </IconItem>
+    <IconItem name="pin.svg">
+        <PinSVG />
+    </IconItem>
+    <IconItem name="question-mark.svg">
+        <QuestionMarkSVG />
+    </IconItem>
+</IconGallery>

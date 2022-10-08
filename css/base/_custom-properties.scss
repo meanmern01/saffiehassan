@@ -1,0 +1,16 @@
+:root {
+    --grid-columns: 8;
+    --grid-gap: 0px;
+    --grid-column-width: calc(
+        (100vw - var(--scrollbar-width, 0px) - var(--offset-x) * 2) / var(--grid-columns) -
+            (var(--grid-gap) * ((var(--grid-columns) - 1) / var(--grid-columns)))
+    );
+
+    --header-height: 64px;
+    --offset-x: 32px;
+
+    @include mobile {
+        --header-height: 56px;
+        --offset-x: 16px;
+    }
+}

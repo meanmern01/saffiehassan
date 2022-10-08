@@ -1,0 +1,136 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.group {
+    --padding-y: 5px;
+    position: relative;
+
+    &.error {
+        .input {
+            color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+
+        .message {
+            color: var(--danger-color);
+        }
+    }
+
+    &.group--label-hidden {
+        .label {
+            opacity: 0;
+        }
+    }
+}
+
+.input {
+    appearance: none;
+    display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    border-bottom: $body-color;
+    padding: var(--padding-y) 0;
+    transition: border-color 0.2s ease;
+    font-size: inherit;
+    line-height: 1.143;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    @include responsive-font-size(12px, 14px, 1280px, 1920px);
+
+    @media screen and (max-width: 1366px) {
+        --padding-y: 4px;
+    }
+
+    &::placeholder {
+        color: rgba($body-color, 0.6);
+    }
+
+    // @mixin hover() {
+    //     border-bottom-color: #000;
+    // }
+
+    // &:focus-visible,
+    // &:active {
+    //     @include hover();
+    // }
+
+    // @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+    //     &:not(:disabled):hover {
+    //         @include hover();
+    //     }
+    // }
+
+    &:focus {
+        outline: 0;
+
+        .group:not(.floated-label) & {
+            ~ .label {
+                opacity: 0;
+            }
+        }
+    }
+
+    &:-webkit-autofill {
+        transition: none;
+
+        &,
+        &:focus,
+        &:active,
+        &:hover {
+            font-family: inherit !important;
+            // font-size: inherit !important;
+            font-weight: inherit !important;
+            transition: color 0s ease-in-out 0s;
+            box-shadow: inset 0 0 0 1000px $light !important;
+        }
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type='number'] {
+        -moz-appearance: textfield;
+    }
+}
+
+.label {
+    position: absolute;
+    top: var(--padding-y);
+    left: 0;
+    color: rgba($body-color, 0.6);
+    @include responsive-font-size(14px, 18px, 1280px, 1920px);
+    line-height: 1.143;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    pointer-events: none;
+    display: block;
+}
+
+.icon {
+    position: absolute;
+    pointer-events: none;
+    right: 0;
+    top: 25px;
+    width: 24px;
+
+    svg {
+        width: 100%;
+        height: auto;
+
+        [stroke]:not([stroke='none']) {
+            stroke: currentColor;
+        }
+    }
+}
+
+.message {
+    margin-top: 0.6em;
+    @include responsive-font-size(10px, 14px, 1024px, 1920px);
+    letter-spacing: 0;
+    line-height: 1.2;
+    min-height: 1.2em;
+}

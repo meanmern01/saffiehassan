@@ -1,0 +1,30 @@
+@import '../../../../css/base/variables';
+@import '../../../../css/utils/mixins';
+
+.container {
+    padding: 13px 16px;
+    background-color: $light-gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    &:not(:last-child) {
+        margin-bottom: 21px;
+    }
+}
+
+.content {
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
+
+.slot {
+    margin-top: auto;
+    margin-left: auto;
+
+    &.slot--fullwidth {
+        width: 100%;
+    }
+}

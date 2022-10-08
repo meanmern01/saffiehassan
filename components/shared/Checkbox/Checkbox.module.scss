@@ -1,0 +1,115 @@
+@import '../../../css/base/variables';
+@import '../../../css/utils/mixins';
+
+.checkbox {
+    padding-left: 44px;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    @media screen and (max-width: 1024px) {
+        padding-left: 36px;
+    }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+        &:checked {
+            ~ .element {
+                &::before {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &:disabled {
+            ~ .element,
+            ~ .text {
+                opacity: $btn-disabled-opacity;
+            }
+        }
+
+        &:focus-visible {
+            ~ .element {
+                outline: 1px solid $primary;
+                outline-offset: 2px;
+            }
+        }
+
+        &.is-error {
+            ~ .element {
+                border-width: 2px;
+                border-color: $danger;
+            }
+        }
+    }
+
+    @media (any-hover: hover), (hover: hover) and (pointer: fine) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.element {
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(#000, 0.15);
+    will-change: transform;
+
+    @media screen and (max-width: 1440px) {
+        width: 20px;
+        height: 20px;
+        top: 0.15em;
+    }
+
+    input[type='radio'] ~ & {
+        border-radius: 50%;
+
+        &::before {
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            background-color: $primary;
+            background-image: none;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 13px;
+        height: 11px;
+        border-radius: inherit;
+        background-image: url("data:image/svg+xml,%3Csvg width='13' height='11' viewBox='0 0 13 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.66 4.87 10 12 1' stroke='%23000'/%3E%3C/svg%3E");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 0;
+        transition: opacity 0.1s ease;
+
+        @media screen and (max-width: 1024px) {
+            width: 11px;
+            height: 10px;
+        }
+    }
+}
+
+.text {
+    display: inline-block;
+    @include responsive-font-size(16px, 18px, 1440px, 1920px);
+    line-height: 1.5;
+    letter-spacing: 0;
+    opacity: 0.4;
+    font-weight: 400;
+    max-width: 50ch;
+
+    @media screen and (max-width: 1024px) {
+        font-size: 14px;
+    }
+}

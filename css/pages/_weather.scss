@@ -1,0 +1,148 @@
+.weather-location {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 30px;
+    }
+}
+
+.weather-location__icon {
+    flex-shrink: 0;
+    margin-right: 16px;
+
+    @media screen and (max-width: 767px) {
+        margin-right: 10px;
+    }
+}
+
+.weather-location__name {
+    @include responsive-font-size(32px, 40px, 1280px, 1920px);
+    letter-spacing: -0.05em;
+    line-height: 1;
+
+    @media screen and (max-width: 767px) {
+        @include responsive-font-size(24px, 44px, 320px, 768px);
+    }
+}
+
+.weather-blocks-row {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        'air    pollen        pollution'
+        'season uv            pollution'
+        'season safe-exposure climate-zone';
+
+    @media screen and (max-width: 960px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            'air           pollen'
+            'season        pollution'
+            'uv            pollution'
+            'safe-exposure climate-zone';
+    }
+
+    @media screen and (max-width: 630px) {
+        grid-template-areas: none;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.weather-blocks-row__item--air-quality {
+    @media screen and (min-width: 631px) {
+        grid-area: air;
+    }
+}
+
+.weather-blocks-row__item--pollen {
+    @media screen and (min-width: 631px) {
+        grid-area: pollen;
+    }
+}
+
+.weather-blocks-row__item--pollution {
+    @media screen and (min-width: 631px) {
+        grid-area: pollution;
+    }
+}
+
+.weather-blocks-row__item--season {
+    @media screen and (min-width: 631px) {
+        grid-area: season;
+    }
+}
+
+.weather-blocks-row__item--pollen {
+    @media screen and (min-width: 631px) {
+        grid-area: pollen;
+    }
+
+    // .weather-pollen__content {
+    //     margin-top: auto;
+    //     padding-top: 59px;
+
+    //     @media screen and (max-width: 1680px) {
+    //         padding-top: 48px;
+    //     }
+
+    //     @media screen and (max-width: 1366px) {
+    //         padding-top: 38px;
+    //     }
+    // }
+}
+
+.weather-blocks-row__item--uv-index {
+    @media screen and (min-width: 631px) {
+        grid-area: uv;
+    }
+}
+
+.weather-blocks-row__item--climate-zone {
+    @media screen and (min-width: 631px) {
+        grid-area: climate-zone;
+    }
+}
+
+.weather-table-wrapper {
+    margin-left: -16px;
+    margin-right: -16px;
+}
+
+.weather-table {
+    width: 100%;
+    table-layout: fixed;
+
+    tr {
+        transition: background-color 0.2s ease;
+
+        @include hover {
+            background-color: #e1e1e2;
+        }
+    }
+
+    td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        @media screen and (max-width: 1366px) {
+            padding-top: 13px;
+            padding-bottom: 13px;
+        }
+
+        &:first-child {
+            padding-left: 16px;
+        }
+
+        &:last-child {
+            padding-right: 16px;
+        }
+
+        &:not(:last-child) {
+            padding-right: 10px;
+        }
+    }
+}

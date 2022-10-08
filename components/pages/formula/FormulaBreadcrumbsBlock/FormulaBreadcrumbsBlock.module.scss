@@ -1,0 +1,45 @@
+@import '../../../../css/base/variables';
+@import '../../../../css/utils/mixins';
+
+.container {
+    background-color: $dark;
+    color: $light;
+}
+
+.top {
+    padding: 14px 16px 8px;
+    border-bottom: 1px solid currentColor;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top-el {
+    flex-shrink: 0;
+
+    &:not(:first-child) {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            background-color: currentColor;
+            width: 1px;
+            height: 0.8125em;
+            margin-left: 8px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+    }
+
+    &:not(:last-child) {
+        opacity: 0.7;
+    }
+}
+
+.content {
+    padding: 7px 16px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
